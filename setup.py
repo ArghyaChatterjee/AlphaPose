@@ -1,4 +1,5 @@
 import os
+import sys
 import platform
 import subprocess
 import time
@@ -22,6 +23,13 @@ def readme():
         content = f.read()
     return content
 
+def install_custom_packages():
+    # Custom packages that may need pre-installed dependencies
+    packages = [
+        "git+https://github.com/Ambrosiussen/HalpeCOCOAPI.git#subdirectory=PythonAPI"
+    ]
+    for package in packages:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
 def get_git_hash():
 
@@ -163,8 +171,7 @@ def get_install_requires():
         'six', 'terminaltables', 'scipy',
         'opencv-python', 'matplotlib', 'visdom',
         'tqdm', 'tensorboardx', 'easydict',
-        'pyyaml', 'halpecocotools',
-        'torch>=1.1.0', 'torchvision>=0.3.0',
+        'pyyaml', 'torch>=1.1.0', 'torchvision>=0.3.0',
         'munkres', 'timm==0.1.20', 'natsort'
     ]
     # official pycocotools doesn't support Windows, we will install it by third-party git repository later
@@ -183,26 +190,26 @@ def is_installed(package_name):
 
 
 if __name__ == '__main__':
+    install_custom_packages()
     write_version_py()
+    # Setup configuration
     setup(
         name='alphapose',
-        version=get_version(),
-        description='Code for AlphaPose',
+        version=get_version(),  # Assuming setting a version for your setup
+        description="AlphaPose is an accurate multi-person pose estimator",
         long_description=readme(),
-        keywords='computer vision, human pose estimation',
+        author='MVIG_SJTU',
+        author_email='example@example.com',
         url='https://github.com/MVIG-SJTU/AlphaPose',
         packages=find_packages(exclude=('data', 'exp',)),
         package_data={'': ['*.json', '*.txt']},
         classifiers=[
             'Development Status :: 4 - Beta',
-            'License :: OSI Approved :: Apache Software License',
+            'Intended Audience :: Developers',
             'Operating System :: OS Independent',
-            'Programming Language :: Python :: 2',
-            'Programming Language :: Python :: 2.7',
             'Programming Language :: Python :: 3',
-            'Programming Language :: Python :: 3.4',
-            'Programming Language :: Python :: 3.5',
-            'Programming Language :: Python :: 3.6',
+            'Programming Language :: Python :: 3.8',
+            'Programming Language :: Python :: 3.10',
         ],
         license='GPLv3',
         python_requires=">=3",
@@ -212,7 +219,7 @@ if __name__ == '__main__':
         ext_modules=get_ext_modules(),
         cmdclass={'build_ext': BuildExtension},
         zip_safe=False)
-    # Windows need pycocotools here: https://github.com/philferriere/cocoapi#subdirectory=PythonAPI
+    
     if platform.system() == 'Windows' and not is_installed('pycocotools'):
         print("\nInstall third-party pycocotools for Windows...")
         cmd = 'python -m pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonAPI'

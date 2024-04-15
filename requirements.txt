@@ -1,0 +1,13 @@
+cython
+wheel
+numpy
+tqdm
+natsort
+opencv-python
+opencv-python-headless
+matplotlib
+scipy
+cython_bbox
+easydict
+PyYAML
+tensorboardX
