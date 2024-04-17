@@ -3,7 +3,7 @@
 [AlphaPose](http://www.mvig.org/research/alphapose.html) is an accurate multi-person pose estimator, which is the **first open-source system that achieves 70+ mAP (75 mAP) on COCO dataset and 80+ mAP (82.1 mAP) on MPII dataset.** To match poses that correspond to the same person across frames, we also provide an efficient online pose tracker called Pose Flow. 
 
 <div align="center">
-    <img src="docs/alphapose_136.gif", width="400"alt><br>
+    <img src="media/AlphaPose.gif", width="400"alt><br>
     <b><a href="https://github.com/Fang-Haoshu/Halpe-FullBody">Halpe 136 keypoints</a></b>
     <b><a href="https://www.youtube.com/watch?v=opqmuJQpZTg">YouTube link</a></b><br>
 </div>
