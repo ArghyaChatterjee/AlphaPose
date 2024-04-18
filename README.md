@@ -5,7 +5,7 @@
 <div align="center">
     <img src="media/AlphaPose.gif", width="400"alt><br>
     <b><a href="https://github.com/Fang-Haoshu/Halpe-FullBody">Halpe 136 keypoints</a></b>
-    <b><a href="https://www.youtube.com/watch?v=opqmuJQpZTg">YouTube link</a></b><br>
+    <b><a href="https://www.youtube.com/watch?v=yn1EZ43aAk0">YouTube link</a></b><br>
 </div>
 
 ## System Used
